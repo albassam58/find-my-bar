@@ -10,7 +10,7 @@ export default function Footer() {
                     <Link href="/">
                         <a>Home</a>
                     </Link>
-                </li>
+                </li> 
                 <li>
                     <Link href="/add-post">
                         <a>Add post</a>
