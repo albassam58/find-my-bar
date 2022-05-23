@@ -1,5 +1,6 @@
 module.exports = {
   content: [
+    "./node_modules/flowbite/**/*.js",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
@@ -7,6 +8,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/forms'),
+    require('flowbite/plugin')
   ],
 }
