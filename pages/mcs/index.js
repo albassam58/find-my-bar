@@ -1,42 +1,43 @@
 import Link from 'next/link';
 
 export default function Mcs({ mcs }) {
-    return (
-      <div class="p-4 mx-auto mt-12 max-w-md bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <div class="flex justify-between items-center mb-4">
-            <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Artists</h5>
-            <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
-                View all
-            </a>
-        </div>
-        <div class="flow-root">
-              <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-                {
-                  mcs.map((mc) => (
-                    <li class="py-3 sm:py-4">
-                        <div class="flex items-center space-x-4">
-                            <div class="flex-shrink-0">
-                                <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Neil image" />
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    {mc.stageName}
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                    {mc.firstName} {mc.lastName}
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                {mc.reppin}
-                            </div>
-                        </div>
-                    </li>
-                  ))
-                }
-              </ul>
-        </div>
+  return (
+    <div className="p-4 mx-auto mt-12 max-w-md bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <div className="flex justify-between items-center mb-4">
+        <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">Artists</h5>
       </div>
-    );
+      <div className="flow-root">
+        <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
+          {
+            mcs.map((mc) => (
+              <li className="py-3 sm:py-4">
+                <Link href={`/mcs/${mc._id}`}>
+                  <a>
+                    <div className="flex items-center space-x-4">
+                      <div className="flex-shrink-0">
+                        <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Neil image" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                          {mc.stageName}
+                        </p>
+                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                          {mc.firstName} {mc.lastName}
+                        </p>
+                      </div>
+                      <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        {mc.reppin}
+                      </div>
+                    </div>
+                  </a>
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export async function getServerSideProps(context) {
@@ -50,8 +51,8 @@ export async function getServerSideProps(context) {
   let { data } = await response.json();
 
   return {
-      props: {
-          mcs: data,
-      },
+    props: {
+      mcs: data,
+    },
   };
 }
